@@ -1,0 +1,15 @@
+# secure shell daemon
+#
+# chkconfig: 2345 90 05
+# description: secure shell daemon
+#
+
+SSHD=/usr/local/sbin/sshd
+
+[ -x $SSHD ] || exit 0
+
+case "$1" in
+  start)        echo "Starting secure shell daemon"
+                eval $SSHD
+                ;;
+esac

@@ -1,0 +1,16 @@
+[Unit]
+Description=OpenSSH Daemon
+Wants=sshdgenkeys.service
+After=sshdgenkeys.service
+After=network.target
+
+
+[Service]
+ExecStart=/usr/local/sbin/sshd -D
+ExecReload=/usr/local/sbin/sshd -t
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+Alias=sshd.service
